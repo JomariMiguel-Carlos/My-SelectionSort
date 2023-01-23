@@ -1,3 +1,6 @@
+print('nums = [59,92,93,71,88,26,14,8,81,11]')
+print("")
+
 def quick_sort(nums):
     length = len(nums)
     if length <=1:
