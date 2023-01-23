@@ -1,3 +1,6 @@
+print('nums = [59,92,93,71,88,26,14,8,81,11]')
+print("")
+
 def mergeSort(arr):
     if len(arr) > 1:
 
