@@ -1,46 +1,48 @@
 print('nums = [59,92,93,71,88,26,14,8,81,11]')
 print("")
 
-def mergeSort(arr):
-    if len(arr) > 1:
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return
 
-        a = len(arr) // 2
-        l = arr[:a]
-        r = arr[a:]
+    mid = len(arr)//2
 
-        mergeSort(l)
-        mergeSort(r)
+    left = arr[:mid]
+    right = arr[mid:]
 
-        b = c = d = 0
+    merge_sort(left)
+    merge_sort(right)
 
-        while b < len(l) and c < len(r):
-            if l[b] < r[c]:
-                arr[d] = l[b]
-                b += 1
-            else:
-                arr[d] = r[c]
-                c += 1
-            d += 1
+    merge_two_sorted_lists(left, right, arr)
 
-        while b < len(l):
-            arr[d] = l[b]
-            b += 1
-            d += 1
+def merge_two_sorted_lists(a,b,arr):
+    len_a = len(a)
+    len_b = len(b)
 
-        while c < len(r):
-            arr[d] = r[c]
-            c += 1
-            d += 1
+    i = j = k = 0
 
-def printList(arr):
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
+    while i < len_a and j < len_b:
+        if a[i] <= b[j]:
+            arr[k] = a[i]
+            i+=1
+        else:
+            arr[k] = b[j]
+            j+=1
+        k+=1
 
-    print()
+    while i < len_a:
+        arr[k] = a[i]
+        i+=1
+        k+=1
+
+    while j < len_b:
+        arr[k] = b[j]
+        j+=1
+        k+=1
+    print(arr)
 
 if __name__ == '__main__':
     arr = [59,92,93,71,88,26,14,8,81,11]
-
-mergeSort(arr)
-
-printList(arr)
+    merge_sort(arr)
+    print("")
+    print(arr)
